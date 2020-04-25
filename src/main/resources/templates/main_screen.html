@@ -4,9 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${title}"></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
 </head>
 
 <body>
-<h1>Hello test!</h1>
+
+<header th:insert="components/header.html"></header>
+
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Pricing</h1>
+    <p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
+</div>
+
+<footer th:insert="components/footer.html"></footer>
 </body>
 </html>
