@@ -18,6 +18,8 @@ public class MainController {
     @Autowired
     private UserRepo userRepo;
 
+    private final String userExists = "Такой пользователь уже зарегистрирован!";
+
     @GetMapping
     public String showMainScreen(Model model) {
         model.addAttribute("title", "Главная");
@@ -42,11 +44,11 @@ public class MainController {
         try {
             User userFromDb = userRepo.findByUsername(username);
             if (userFromDb != null) {
-                model.put("message", "User exists!");
+                model.put("message", userExists);
                 return "registration_screen.html";
             }
         } catch (Exception ex) {
-            model.put("message", "User exists!");
+            model.put("message", userExists);
             return "registration_screen.html";
         }
         User user = new User(username, password);

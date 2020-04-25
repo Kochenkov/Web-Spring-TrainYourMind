@@ -2,20 +2,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
+    <meta charset="UTF-8">
     <title>Авторизация</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
 </head>
-<body>
-<div th:if="${param.error}">
-    Invalid username and password.
+<body class="text-center vsc-initialized">
+<div class="container">
+    <h1 class="h3 mb-3 font-weight-normal">Авторизуйтесь, пожалуйста</h1>
+    <div class="alert alert-danger alert-dismissible fade show" th:if="${param.error}">Некорректное имя пользователя или пароль!</div>
+    <div class="alert alert-success alert-dismissible fade show" th:if="${param.logout}">Вы успешно вышли</div>
+    <form th:action="@{/login}" method="post">
+        <div class="pb-2"><input type="text" name="username" required="" placeholder="Имя"/></div>
+        <div class="pb-2"><input type="password" name="password" placeholder="Пароль" required=""/></div>
+        <button class="btn btn-primary" type="submit">Войти</button>
+    </form>
+    <a class="pb-2" href="/registration">Регистрация нового пользователя</a>
 </div>
-<div th:if="${param.logout}">
-    You have been logged out.
-</div>
-<form th:action="@{/login}" method="post">
-    <div><label> User Name : <input type="text" name="username"/> </label></div>
-    <div><label> Password: <input type="password" name="password"/> </label></div>
-    <div><input type="submit" value="Sign In"/></div>
-</form>
-<a href="/registration">Регистрация нового пользователя</a>
+<footer th:insert="components/footer.html"></footer>
 </body>
 </html>

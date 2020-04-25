@@ -6,16 +6,13 @@
     <title th:text="${title}"></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
 </head>
-
 <body>
-
 <header th:insert="components/header.html"></header>
-
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <h1 class="display-4">Pricing</h1>
-    <p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
+    <form th:action="@{/play}" method="post">
+        <input class="btn btn-outline-primary" type="submit" value="Начать тренировку!"/>
+    </form>
 </div>
-
 <footer th:insert="components/footer.html"></footer>
 </body>
 </html>

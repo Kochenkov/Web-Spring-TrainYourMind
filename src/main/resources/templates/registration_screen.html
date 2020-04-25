@@ -2,15 +2,35 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <title>Регистрация</title>
+    <meta charset="UTF-8">
+    <title>Регистрация нового пользователя</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+    <script>
+    function validation() {
+        a = document.getElementById("password");
+        b = document.getElementById("repeat");
+        c = document.getElementById("submit");
+        if (a.value != b.value) {
+            c.disabled=true;
+        } else {
+            c.disabled=false;
+        }
+    }
+    </script>
 </head>
-<body>
-<h1>Регистрация</h1>
-<p th:text="${message}"></p>
-<form method="post" action="/registration">
-    <div><label> User Name : <input type="text" name="username"/> </label></div>
-    <div><label> Password: <input type="password" name="password"/> </label></div>
-    <div><input type="submit" value="Registration"/></div>
-</form>
+<body class="text-center vsc-initialized">
+<div class="container">
+    <h1 class="h3 mb-3 font-weight-normal">Заполните, пожалуйста, форму для регистрации</h1>
+    <div class="alert alert-warning alert-dismissible fade show" th:if="${message!=null}" th:text="${message}"></div>
+    <form method="post" action="/registration">
+        <div class="pb-2"><input type="text" name="username" required="" placeholder="Имя"/></div>
+        <div class="pb-2"><input id="password" type="password" name="password" placeholder="Пароль" required="" oninput="validation()"/></div>
+        <div class="pb-2"><input id="repeat" placeholder="Повторите пароль" required="" oninput="validation()"/></div>
+        <button class="btn btn-primary" type="submit" id="submit">Зарегистрироваться</button>
+    </form>
+    <a class="pb-2" href="/login">Вернуться на страницу входа</a>
+
+</div>
+<footer th:insert="components/footer.html"></footer>
 </body>
 </html>
