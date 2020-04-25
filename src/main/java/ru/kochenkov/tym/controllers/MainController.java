@@ -10,6 +10,7 @@ import ru.kochenkov.tym.models.Role;
 import ru.kochenkov.tym.models.User;
 import ru.kochenkov.tym.repositories.UserRepo;
 
+import java.security.Principal;
 import java.util.Collections;
 import java.util.Map;
 
@@ -21,9 +22,10 @@ public class MainController {
     private final String userExists = "Такой пользователь уже зарегистрирован!";
 
     @GetMapping
-    public String showMainScreen(Model model) {
+    public String showMainScreen(Model model, Principal principal) {
+        String name = principal.getName();
         model.addAttribute("title", "Главная");
-        model.addAttribute("userName", "Vlad");
+        model.addAttribute("userName", name);
         return "main_screen.html";
     }
 

@@ -25,7 +25,7 @@
     <form method="post" action="/registration">
         <div class="pb-2"><input type="text" name="username" required="" placeholder="Имя"/></div>
         <div class="pb-2"><input id="password" type="password" name="password" placeholder="Пароль" required="" oninput="validation()"/></div>
-        <div class="pb-2"><input id="repeat" placeholder="Повторите пароль" required="" oninput="validation()"/></div>
+        <div class="pb-2"><input id="repeat" type="password" placeholder="Повторите пароль" required="" oninput="validation()"/></div>
         <button class="btn btn-primary" type="submit" id="submit">Зарегистрироваться</button>
     </form>
     <a class="pb-2" href="/login">Вернуться на страницу входа</a>
