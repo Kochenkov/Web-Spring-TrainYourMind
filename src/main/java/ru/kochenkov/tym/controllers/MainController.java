@@ -15,29 +15,21 @@ public class MainController {
     private UserRepo userRepo;
 
     @GetMapping
-    public String showMainScreen(Model model, Principal principal) {
+    public String openMainScreen(Model model, Principal principal) {
         String name = principal.getName();
         model.addAttribute("userName", name);
         return "main_screen.html";
     }
 
     @GetMapping("/login")
-    public String showLoginScreen() {
+    public String openLoginScreen() {
         return "login_screen.html";
     }
 
     @GetMapping("/info")
-    public String showInfoScreen(Model model, Principal principal) {
+    public String openInfoScreen(Model model, Principal principal) {
         String name = principal.getName();
         model.addAttribute("userName", name);
         return "info_screen.html";
-    }
-
-    @GetMapping("/play")
-    public String showGameScreen(Model model, Principal principal) {
-        String name = principal.getName();
-        model.addAttribute("userName", name);
-        model.addAttribute("equation", "test 123");
-        return "game_screen.html";
     }
 }
