@@ -10,7 +10,7 @@
 <div class="container">
     <h1 class="h3 mb-3 font-weight-normal">Авторизуйтесь, пожалуйста</h1>
     <div class="alert alert-danger alert-dismissible fade show" th:if="${param.error}">Некорректное имя пользователя или пароль!</div>
-    <div class="alert alert-success alert-dismissible fade show" th:if="${param.logout}">Вы успешно вышли</div>
+    <div class="alert alert-success alert-dismissible fade show text-center mx-auto" th:if="${param.logout}">Вы успешно вышли</div>
     <form th:action="@{/login}" method="post">
         <div class="pb-2"><input type="text" name="username" required="" placeholder="Имя"/></div>
         <div class="pb-2"><input type="password" name="password" placeholder="Пароль" required=""/></div>

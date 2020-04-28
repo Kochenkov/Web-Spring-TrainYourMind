@@ -3,16 +3,16 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Главная</title>
+    <title>Игра</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
 </head>
 <body>
 <header th:insert="components/header.html"></header>
+
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <form th:action="@{/play}" method="get">
-        <input class="btn btn-outline-primary" type="submit" value="Начать тренировку!"/>
-    </form>
+    <p th:text="${equation}"></p>
 </div>
+
 <footer th:insert="components/footer.html"></footer>
 </body>
 </html>

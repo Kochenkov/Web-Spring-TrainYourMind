@@ -9,6 +9,7 @@ import ru.kochenkov.tym.repositories.UserRepo;
 
 @Service
 public class UserService implements UserDetailsService {
+
     @Autowired
     private UserRepo userRepo;
 
