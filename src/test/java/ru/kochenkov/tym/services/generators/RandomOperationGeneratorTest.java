@@ -1,7 +1,6 @@
 package ru.kochenkov.tym.services.generators;
 
 import org.junit.jupiter.api.Test;
-import ru.kochenkov.tym.services.generators.RandomOperationGenerator;
 
 import static org.junit.jupiter.api.Assertions.*;
 

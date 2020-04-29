@@ -1,9 +1,11 @@
 package ru.kochenkov.tym.services.generators;
 
+import org.springframework.stereotype.Service;
 import ru.kochenkov.tym.models.Equation;
 
 import java.util.ArrayList;
 
+@Service
 public class EquationGenerator {
 
     public ArrayList<String> createRandomEquationArray(int size) {

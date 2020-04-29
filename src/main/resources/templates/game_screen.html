@@ -10,7 +10,19 @@
 <header th:insert="components/header.html"></header>
 
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <p th:text="${equation}"></p>
+    <h1 th:text="${equation.showEquationBody()} + ' = ?'"></h1>
+    <div th:if="${showResponseForm}">
+        <h1 th:text="${equation.isCorrect()}"></h1>
+    </div>
+</div>
+<div th:if="${showRequestForm}" class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <form th:action="@{/game/check}" method="post">
+        <div class="pb-2">
+            <input type="text" name="answer" required="" placeholder="Ответ"/>
+            <input type="hidden" name="eqId" th:value="${equation.getId()}"/>
+        </div>
+        <input class="btn btn-outline-primary" type="submit" value="Ответить"/>
+    </form>
 </div>
 
 <footer th:insert="components/footer.html"></footer>
