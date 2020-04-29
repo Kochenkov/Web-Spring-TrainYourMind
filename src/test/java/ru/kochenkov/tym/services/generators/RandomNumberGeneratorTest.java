@@ -1,4 +1,4 @@
-package ru.kochenkov.tym.services;
+package ru.kochenkov.tym.services.generators;
 
 import org.junit.jupiter.api.Test;
 import ru.kochenkov.tym.services.generators.RandomNumberGenerator;
@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RandomNumberGeneratorTest {
 
-    RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+    private RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
 
     @Test
     void createRandomNumber() {
