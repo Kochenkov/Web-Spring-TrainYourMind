@@ -35,14 +35,14 @@ class EquationGeneratorTest {
     @Test
     void createEquationFromExactArray() {
         Equation equation = equationGenerator.createEquationFromArray(new ArrayList<String>(Arrays.asList("1", "+", "4", "/", "4")));
-        assertEquals(2.0, equation.getAnswer());
+        assertEquals(2.0, equation.getInitialAnswer());
         assertEquals(Arrays.asList("1", "+", "4", "/", "4"), equation.getArray());
     }
 
     @Test
     void createEquationFromExactArrayWithZeroValidation() {
         Equation equation = equationGenerator.createEquationFromArray(new ArrayList<String>(Arrays.asList("8", "+", "3", "/", "4")));
-        assertNotNull(equation.getAnswer());
+        assertNotNull(equation.getInitialAnswer());
         assertNotEquals(Arrays.asList("8", "+", "3", "/", "4"), equation.getArray());
     }
 
@@ -51,6 +51,6 @@ class EquationGeneratorTest {
     void createEquationFromRandomArray() {
         Equation equation = equationGenerator.createEquationFromArray(equationGenerator.createRandomEquationArray(2));
         System.out.println(equation.getArray());
-        System.out.println(equation.getAnswer());
+        System.out.println(equation.getInitialAnswer());
     }
 }

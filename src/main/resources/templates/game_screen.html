@@ -5,24 +5,48 @@
     <meta charset="UTF-8">
     <title>Игра</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+    <script>
+    function validation() {
+        a = document.getElementById("password");
+        b = document.getElementById("repeat");
+        c = document.getElementById("submit");
+        if (a.value != b.value) {
+            c.disabled=true;
+        } else {
+            c.disabled=false;
+        }
+    }
+    </script>
 </head>
 <body>
 <header th:insert="components/header.html"></header>
 
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <h1 th:text="${equation.showEquationBody()} + ' = ?'"></h1>
+
     <div th:if="${showResponseForm}">
-        <h1 th:text="${equation.isCorrect()}"></h1>
+        <h1 th:text="${equation.showEquationBody()} + ' = ' + ${equation.getInitialAnswer()}"></h1>
+        <h2 th:text="'Ваш ответ: ' + ${equation.getUserAnswer()}"></h2>
+        <h2 th:if="${equation.isCorrect()}" class="text-success">Верно!</h2>
+        <h2 th:unless="${equation.isCorrect()}" class="text-danger">Не верно</h2>
+        <a href="/">
+            <button type="button" class="btn btn-primary">На главную</button>
+        </a>
+        <a href="/game/new">
+            <button type="button" class="btn btn-success">Новая задача</button>
+        </a>
     </div>
-</div>
-<div th:if="${showRequestForm}" class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <form th:action="@{/game/check}" method="post">
-        <div class="pb-2">
-            <input type="text" name="answer" required="" placeholder="Ответ"/>
-            <input type="hidden" name="eqId" th:value="${equation.getId()}"/>
-        </div>
-        <input class="btn btn-outline-primary" type="submit" value="Ответить"/>
-    </form>
+
+    <div th:if="${showRequestForm}">
+        <h1 th:text="${equation.showEquationBody()} + ' = ?'"></h1>
+        <form th:action="@{/game/check}" method="post">
+            <div class="pb-2">
+                <input type="number" name="userAnswer" required="" placeholder="Ваш ответ" oninput="validation()"/>
+                <input type="hidden" name="eqId" th:value="${equation.getId()}"/>
+            </div>
+            <input class="btn btn-outline-primary" type="submit" value="Ответить"/>
+        </form>
+    </div>
+
 </div>
 
 <footer th:insert="components/footer.html"></footer>

@@ -82,7 +82,7 @@ public class EquationGenerator {
                 }
             }
         }
-        equation.setAnswer(answer);
+        equation.setInitialAnswer(answer);
         return equation;
     }
 

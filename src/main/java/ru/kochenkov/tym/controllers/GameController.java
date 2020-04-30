@@ -40,12 +40,11 @@ public class GameController {
         model.addAttribute("equation", equation);
         model.addAttribute("showRequestForm", true);
         model.addAttribute("showResponseForm", false);
-
         return "game_screen.html";
     }
 
     @PostMapping("/check")
-    public String checkAnswer(@RequestParam Long eqId, @RequestParam float answer,
+    public String checkAnswer(@RequestParam Long eqId, @RequestParam String userAnswer,
                               Model model, Principal principal) {
 
         String name = principal.getName();
@@ -53,17 +52,10 @@ public class GameController {
 
         Equation equation = equationRepo.findEquationById(eqId);
         try {
-            if (equation.getAnswer()==answer) {
-                equation.setCorrect(true);
-            } else {
-                equation.setCorrect(false);
-            }
-        } catch (NumberFormatException ex) {
-            equation.setCorrect(false);
+            equation.setUserAnswer(Float.parseFloat(userAnswer));
+        } catch (NumberFormatException e) {
+            equation.setUserAnswer(0.0000001f);
         }
-
-        System.out.println("equation.getAnswer():" + equation.getAnswer());
-        System.out.println("answer:" + answer);
         equationRepo.save(equation);
         model.addAttribute("equation", equation);
         model.addAttribute("showRequestForm", false);
