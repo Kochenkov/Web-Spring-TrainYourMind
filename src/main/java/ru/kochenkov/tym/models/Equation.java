@@ -42,6 +42,10 @@ public class Equation {
         return str;
     }
 
+    public String showFullEquation() {
+        return showEquationBody() + "= " + this.initialAnswer;
+    }
+
     public Long getId() {
         return id;
     }

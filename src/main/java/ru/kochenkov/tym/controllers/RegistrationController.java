@@ -2,6 +2,7 @@ package ru.kochenkov.tym.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +12,6 @@ import ru.kochenkov.tym.models.User;
 import ru.kochenkov.tym.repositories.UserRepo;
 
 import java.util.Collections;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/registration")
@@ -30,15 +30,15 @@ public class RegistrationController {
     @PostMapping
     public String addNewUserInDb(@RequestParam String username,
                                  @RequestParam String password,
-                                 Map<String, Object> model) {
+                                 Model model) {
         try {
             User userFromDb = userRepo.findByUsername(username);
             if (userFromDb != null) {
-                model.put("message", userExists);
+                model.addAttribute("message", userExists);
                 return "registration_screen.html";
             }
         } catch (Exception ex) {
-            model.put("message", userExists);
+            model.addAttribute("message", userExists);
             return "registration_screen.html";
         }
         User user = new User(username, password);

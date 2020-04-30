@@ -12,12 +12,15 @@
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
 
     <div th:if="${showResponseForm}">
-        <h1 th:text="${equation.showEquationBody()} + ' = ' + ${equation.getInitialAnswer()}"></h1>
+        <h1 th:text="${equation.showFullEquation()}"></h1>
         <h2 th:text="'Ваш ответ: ' + ${equation.getUserAnswer()}"></h2>
         <h2 th:if="${equation.isCorrect()}" class="text-success">Верно!</h2>
         <h2 th:unless="${equation.isCorrect()}" class="text-danger">Не верно</h2>
         <a href="/">
             <button type="button" class="btn btn-primary">На главную</button>
+        </a>
+        <a href="/statistics">
+            <button type="button" class="btn btn-info">Статистика</button>
         </a>
         <a href="/game/new">
             <button type="button" class="btn btn-success">Новая задача</button>

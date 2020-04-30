@@ -1,9 +1,16 @@
 package ru.kochenkov.tym.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 import ru.kochenkov.tym.models.Equation;
+import ru.kochenkov.tym.models.User;
 
-public interface EquationRepo extends JpaRepository<Equation, Long> {
+import java.util.List;
 
-    Equation findEquationById(Long id);
+public interface EquationRepo extends CrudRepository<Equation, Integer> {
+
+    /*
+    https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.query-creation
+     */
+    Equation findById(Long id);
+    List<Equation> findByUser(User user);
 }

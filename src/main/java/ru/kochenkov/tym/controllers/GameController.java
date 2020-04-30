@@ -21,10 +21,10 @@ import java.util.ArrayList;
 public class GameController {
 
     @Autowired
-    EquationGenerator equationGenerator;
+    private EquationGenerator equationGenerator;
 
     @Autowired
-    EquationRepo equationRepo;
+    private EquationRepo equationRepo;
 
     @GetMapping("/new")
     public String startNewGame(@AuthenticationPrincipal User user,
@@ -50,7 +50,7 @@ public class GameController {
         String name = principal.getName();
         model.addAttribute("userName", name);
 
-        Equation equation = equationRepo.findEquationById(eqId);
+        Equation equation = equationRepo.findById(eqId);
         try {
             equation.setUserAnswer(Float.parseFloat(userAnswer));
         } catch (NumberFormatException e) {
