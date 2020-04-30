@@ -23,7 +23,7 @@
     <h1 class="h3 mb-3 font-weight-normal">Заполните, пожалуйста, форму для регистрации</h1>
     <div class="alert alert-warning alert-dismissible fade show" th:if="${message!=null}" th:text="${message}"></div>
     <form method="post" action="/registration">
-        <div class="pb-2"><input type="text" name="username" required="" placeholder="Имя"/></div>
+        <div class="pb-2"><input type="text" maxlength="10" name="username" required="" placeholder="Имя"/></div>
         <div class="pb-2"><input id="password" type="password" name="password" placeholder="Пароль" required="" oninput="validation()"/></div>
         <div class="pb-2"><input id="repeat" type="password" placeholder="Повторите пароль" required="" oninput="validation()"/></div>
         <button class="btn btn-primary" type="submit" id="submit">Зарегистрироваться</button>

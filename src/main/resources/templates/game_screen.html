@@ -5,18 +5,6 @@
     <meta charset="UTF-8">
     <title>Игра</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
-    <script>
-    function validation() {
-        a = document.getElementById("password");
-        b = document.getElementById("repeat");
-        c = document.getElementById("submit");
-        if (a.value != b.value) {
-            c.disabled=true;
-        } else {
-            c.disabled=false;
-        }
-    }
-    </script>
 </head>
 <body>
 <header th:insert="components/header.html"></header>
@@ -40,7 +28,7 @@
         <h1 th:text="${equation.showEquationBody()} + ' = ?'"></h1>
         <form th:action="@{/game/check}" method="post">
             <div class="pb-2">
-                <input type="number" name="userAnswer" required="" placeholder="Ваш ответ" oninput="validation()"/>
+                <input type="number" step="any" name="userAnswer" required="" placeholder="Ваш ответ"/>
                 <input type="hidden" name="eqId" th:value="${equation.getId()}"/>
             </div>
             <input class="btn btn-outline-primary" type="submit" value="Ответить"/>
