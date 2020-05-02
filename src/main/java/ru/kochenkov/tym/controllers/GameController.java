@@ -27,12 +27,8 @@ public class GameController {
     private EquationRepo equationRepo;
 
     @GetMapping("/new")
-    public String startNewGame(@AuthenticationPrincipal User user,
-                               Model model, Principal principal) {
-
-        String name = principal.getName();
-        model.addAttribute("userName", name);
-
+    public String startNewGame(@AuthenticationPrincipal User user, Model model) {
+        model.addAttribute("userName", user.getUsername());
         ArrayList<String> eqArray = equationGenerator.createRandomEquationArray(2);
         Equation equation = equationGenerator.createEquationFromArray(eqArray);
         equation.setUser(user);
@@ -44,11 +40,12 @@ public class GameController {
     }
 
     @PostMapping("/check")
-    public String checkAnswer(@RequestParam Long eqId, @RequestParam String userAnswer,
-                              Model model, Principal principal) {
+    public String checkAnswer(@AuthenticationPrincipal User user,
+                              @RequestParam Long eqId,
+                              @RequestParam String userAnswer,
+                              Model model) {
 
-        String name = principal.getName();
-        model.addAttribute("userName", name);
+        model.addAttribute("userName", user.getUsername());
 
         Equation equation = equationRepo.findById(eqId);
         try {

@@ -1,6 +1,7 @@
 package ru.kochenkov.tym.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,9 +24,8 @@ public class MainController {
     private EquationRepo equationRepo;
 
     @GetMapping
-    public String openMainScreen(Model model, Principal principal) {
-        String name = principal.getName();
-        model.addAttribute("userName", name);
+    public String openMainScreen(@AuthenticationPrincipal User user, Model model) {
+        model.addAttribute("userName", user.getUsername());
         return "main_screen.html";
     }
 
@@ -35,17 +35,14 @@ public class MainController {
     }
 
     @GetMapping("/info")
-    public String openInfoScreen(Model model, Principal principal) {
-        String name = principal.getName();
-        model.addAttribute("userName", name);
+    public String openInfoScreen(@AuthenticationPrincipal User user, Model model) {
+        model.addAttribute("userName", user.getUsername());
         return "info_screen.html";
     }
 
     @GetMapping("/statistics")
-    public String openStatisticsScreen(Model model, Principal principal) {
-        String name = principal.getName();
-        model.addAttribute("userName", name);
-        User user = userRepo.findByUsername(name);
+    public String openStatisticsScreen(@AuthenticationPrincipal User user, Model model) {
+        model.addAttribute("userName", user.getUsername());
         List<Equation> equations = equationRepo.findByUser(user);
         List<Equation> sortedEquations = new ArrayList<>();
         for (Equation eq : equations) {

@@ -14,14 +14,18 @@
         <tr>
             <th scope="col">Выражение</th>
             <th scope="col">Ваш ответ</th>
+            <!--todo-->
+            <!--<th scope="col">Дата</th>-->
         </tr>
         </thead>
         <tbody>
         <tr th:each="elem : ${userEquations}">
             <td th:if="${elem.isCorrect()}" class="table-success" th:text="${elem.showFullEquation()}"></td>
             <td th:if="${elem.isCorrect()}" class="table-success" th:text="${elem.getUserAnswer()}"></td>
+            <!--<td th:if="${elem.isCorrect()}" class="table-success" th:text="todo"></td>-->
             <td th:unless="${elem.isCorrect()}" class="table-danger"th:text="${elem.showFullEquation()}"></td>
             <td th:unless="${elem.isCorrect()}" class="table-danger" th:text="${elem.getUserAnswer()}"></td>
+            <!--<td th:unless="${elem.isCorrect()}" class="table-danger" th:text="todo"></td>-->
         </tr>
         </tbody>
     </table>
