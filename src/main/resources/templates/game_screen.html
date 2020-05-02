@@ -16,15 +16,9 @@
         <h2 th:text="'Ваш ответ: ' + ${equation.getUserAnswer()}"></h2>
         <h2 th:if="${equation.isCorrect()}" class="text-success">Верно!</h2>
         <h2 th:unless="${equation.isCorrect()}" class="text-danger">Не верно</h2>
-        <a href="/">
-            <button type="button" class="btn btn-primary">На главную</button>
-        </a>
-        <a href="/statistics">
-            <button type="button" class="btn btn-info">Статистика</button>
-        </a>
-        <a href="/game/new">
-            <button type="button" class="btn btn-success">Новая задача</button>
-        </a>
+        <a class="p-2" href="/"><-- На главную</a>
+        <a class="p-2" href="/statistics">Статистика</a>
+        <a class="p-2" href="/game/new">Новая задача --></a>
     </div>
 
     <div th:if="${showRequestForm}">
