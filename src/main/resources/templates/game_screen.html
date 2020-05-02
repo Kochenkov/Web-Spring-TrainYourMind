@@ -24,11 +24,11 @@
     <div th:if="${showRequestForm}">
         <h1 th:text="${equation.showEquationBody()} + ' = ?'"></h1>
         <form th:action="@{/game/check}" method="post">
-            <div class="pb-2">
+            <div class="m-2">
                 <input type="number" step="any" name="userAnswer" required="" placeholder="Ваш ответ"/>
                 <input type="hidden" name="eqId" th:value="${equation.getId()}"/>
             </div>
-            <input class="btn btn-outline-primary" type="submit" value="Ответить"/>
+            <input class="btn btn-outline-primary m-2" type="submit" value="Ответить"/>
         </form>
     </div>
 

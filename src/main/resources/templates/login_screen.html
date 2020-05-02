@@ -11,12 +11,12 @@
     <h1 class="h3 mb-3 font-weight-normal">Авторизуйтесь, пожалуйста</h1>
     <div class="alert alert-danger alert-dismissible fade show" th:if="${param.error}">Некорректное имя пользователя или пароль!</div>
     <div class="alert alert-success alert-dismissible fade show text-center mx-auto" th:if="${param.logout}">Вы успешно вышли</div>
-    <form th:action="@{/login}" method="post">
-        <div class="pb-2"><input type="text" name="username" required="" placeholder="Имя"/></div>
-        <div class="pb-2"><input type="password" name="password" placeholder="Пароль" required=""/></div>
-        <button class="btn btn-primary" type="submit">Войти</button>
+    <form th:action="@{/login}" method="post" class="m-2">
+        <div class="m-2"><input type="text" name="username" required="" placeholder="Имя"/></div>
+        <div class="m-2"><input type="password" name="password" placeholder="Пароль" required=""/></div>
+        <button class="btn btn-primary m-2" type="submit">Войти</button>
     </form>
-    <a class="pb-2" href="/registration">Регистрация нового пользователя</a>
+    <a href="/registration">Регистрация нового пользователя</a>
 </div>
 <footer th:insert="components/footer.html"></footer>
 </body>

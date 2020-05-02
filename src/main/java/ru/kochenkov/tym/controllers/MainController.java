@@ -10,12 +10,13 @@ import ru.kochenkov.tym.models.User;
 import ru.kochenkov.tym.repositories.EquationRepo;
 import ru.kochenkov.tym.repositories.UserRepo;
 
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class MainController {
+
+    private final String infoMessage = "Вы не решили ни одной задачи, у вас пока нет статистики ¯\\_(ツ)_/¯";
 
     @Autowired
     private UserRepo userRepo;
@@ -50,7 +51,11 @@ public class MainController {
                 sortedEquations.add(eq);
             }
         }
-        model.addAttribute("userEquations", sortedEquations);
+        if (sortedEquations.size()>0) {
+            model.addAttribute("userEquations", sortedEquations);
+        } else {
+            model.addAttribute("infoMessage", infoMessage);
+        }
         return "statistics_screen.html";
     }
 }
