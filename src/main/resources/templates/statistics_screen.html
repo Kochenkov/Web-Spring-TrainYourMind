@@ -8,8 +8,8 @@
 </head>
 <body>
 <header th:insert="components/header.html"></header>
-<div th:if="${infoMessage}" class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <h2 th:text="${infoMessage}"></h2>
+<div th:if="${message}" class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h2 th:text="${message}"></h2>
 </div>
 <div class="pricing-header mx-auto text-center">
     <table class="table" th:if="${userEquations}">

@@ -20,7 +20,7 @@ public class RegistrationController {
     @Autowired
     private UserRepo userRepo;
 
-    private final String userExists = "Такой пользователь уже зарегистрирован!";
+    private final String infoMessage = "Такой пользователь уже зарегистрирован!";
 
     @GetMapping
     public String showRegistrationScreen() {
@@ -34,11 +34,11 @@ public class RegistrationController {
         try {
             User userFromDb = userRepo.findByUsername(username);
             if (userFromDb != null) {
-                model.addAttribute("message", userExists);
+                model.addAttribute("message", infoMessage);
                 return "registration_screen.html";
             }
         } catch (Exception ex) {
-            model.addAttribute("message", userExists);
+            model.addAttribute("message", infoMessage);
             return "registration_screen.html";
         }
         User user = new User(username, password);

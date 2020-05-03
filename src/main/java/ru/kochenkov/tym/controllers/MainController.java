@@ -54,7 +54,7 @@ public class MainController {
         if (sortedEquations.size()>0) {
             model.addAttribute("userEquations", sortedEquations);
         } else {
-            model.addAttribute("infoMessage", infoMessage);
+            model.addAttribute("message", infoMessage);
         }
         return "statistics_screen.html";
     }

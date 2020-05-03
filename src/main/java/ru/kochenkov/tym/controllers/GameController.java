@@ -13,7 +13,6 @@ import ru.kochenkov.tym.models.User;
 import ru.kochenkov.tym.repositories.EquationRepo;
 import ru.kochenkov.tym.services.generators.EquationGenerator;
 
-import java.security.Principal;
 import java.util.ArrayList;
 
 @Controller
