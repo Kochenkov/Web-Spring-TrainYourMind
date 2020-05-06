@@ -22,6 +22,8 @@ public class Equation {
 
     private float userAnswer;
 
+    private String date;
+
     private boolean answered;
 
     private boolean correct;
@@ -94,5 +96,13 @@ public class Equation {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

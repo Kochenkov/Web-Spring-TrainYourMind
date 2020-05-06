@@ -13,7 +13,9 @@ import ru.kochenkov.tym.models.User;
 import ru.kochenkov.tym.repositories.EquationRepo;
 import ru.kochenkov.tym.services.generators.EquationGenerator;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 @Controller
 @RequestMapping("/game")
@@ -52,6 +54,15 @@ public class GameController {
         } catch (NumberFormatException e) {
             equation.setUserAnswer(0.0000001f);
         }
+
+        //setDate
+        Date date = new Date();
+        String pattern = "d-MM-yyyy HH:mm";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        String formattedDate = simpleDateFormat.format(date);
+        equation.setDate(formattedDate);
+        //
+
         equationRepo.save(equation);
         model.addAttribute("equation", equation);
         model.addAttribute("showRequestForm", false);

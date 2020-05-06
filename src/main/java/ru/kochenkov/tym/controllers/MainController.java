@@ -38,7 +38,7 @@ public class MainController {
     @GetMapping("/info")
     public String openInfoScreen(@AuthenticationPrincipal User user, Model model) {
         model.addAttribute("userName", user.getUsername());
-        return "info_screen.html";
+        return "user_info_screen.html";
     }
 
     @GetMapping("/statistics")
