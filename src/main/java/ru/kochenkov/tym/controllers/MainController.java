@@ -35,10 +35,10 @@ public class MainController {
         return "login_screen.html";
     }
 
-    @GetMapping("/info")
+    @GetMapping("/settings")
     public String openInfoScreen(@AuthenticationPrincipal User user, Model model) {
         model.addAttribute("userName", user.getUsername());
-        return "user_info_screen.html";
+        return "settings_screen.html";
     }
 
     @GetMapping("/statistics")
