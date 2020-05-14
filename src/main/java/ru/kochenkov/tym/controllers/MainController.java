@@ -48,7 +48,7 @@ public class MainController {
         List<Equation> sortedEquations = new ArrayList<>();
         for (Equation eq : equations) {
             if (eq.isAnswered()) {
-                sortedEquations.add(eq);
+                sortedEquations.add(0, eq);
             }
         }
         if (sortedEquations.size()>0) {
