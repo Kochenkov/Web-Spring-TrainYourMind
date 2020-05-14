@@ -5,6 +5,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import ru.kochenkov.tym.models.Equation;
 import ru.kochenkov.tym.models.User;
 import ru.kochenkov.tym.repositories.EquationRepo;
@@ -42,7 +43,10 @@ public class MainController {
     }
 
     @GetMapping("/statistics")
-    public String openStatisticsScreen(@AuthenticationPrincipal User user, Model model) {
+    public String openStatisticsScreen(@AuthenticationPrincipal User user,
+                                       Model model,
+                                       @RequestParam(defaultValue = "10") String size) {
+        int arraySize = Integer.parseInt(size);
         model.addAttribute("userName", user.getUsername());
         List<Equation> equations = equationRepo.findByUser(user);
         List<Equation> sortedEquations = new ArrayList<>();
@@ -52,6 +56,9 @@ public class MainController {
             }
         }
         if (sortedEquations.size()>0) {
+            if (sortedEquations.size()>arraySize) {
+                sortedEquations = sortedEquations.subList(0, arraySize);
+            }
             model.addAttribute("userEquations", sortedEquations);
         } else {
             model.addAttribute("message", infoMessage);
