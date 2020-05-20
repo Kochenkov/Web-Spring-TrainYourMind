@@ -45,8 +45,9 @@ public class MainController {
     @GetMapping("/statistics")
     public String openStatisticsScreen(@AuthenticationPrincipal User user,
                                        Model model,
-                                       @RequestParam(defaultValue = "50") String size) {
+                                       @RequestParam(defaultValue = "10") String size) {
         int arraySize = Integer.parseInt(size);
+        model.addAttribute("size", arraySize + 10);
         model.addAttribute("userName", user.getUsername());
         List<Equation> equations = equationRepo.findByUser(user);
         List<Equation> sortedEquations = new ArrayList<>();

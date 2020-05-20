@@ -31,7 +31,7 @@
         </tr>
         </tbody>
     </table>
-    <a href="/statistics/?size=200">Загрузить последние 200 игр</a>
+    <a th:href="@{'/statistics/?size=' + ${size}}">Загрузить ещё</a>
 </div>
 <footer th:insert="components/footer.html"></footer>
 </body>
