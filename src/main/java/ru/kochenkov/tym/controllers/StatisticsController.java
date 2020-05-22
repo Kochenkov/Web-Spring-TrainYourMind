@@ -31,9 +31,11 @@ public class StatisticsController {
     public String openStatisticsScreen(@AuthenticationPrincipal User user,
                                        Model model,
                                        @RequestParam(defaultValue = "10") String size) {
+
+        model.addAttribute("userName", user.getUsername());
         int arraySize = Integer.parseInt(size);
         model.addAttribute("size", arraySize + 10);
-        model.addAttribute("userName", user.getUsername());
+        model.addAttribute("loadMoreFields", true);
         List<Equation> equations = equationRepo.findByUser(user);
         List<Equation> sortedEquations = new ArrayList<>();
         for (Equation eq : equations) {
@@ -44,6 +46,8 @@ public class StatisticsController {
         if (sortedEquations.size() > 0) {
             if (sortedEquations.size() > arraySize) {
                 sortedEquations = sortedEquations.subList(0, arraySize);
+            } else {
+                model.addAttribute("loadMoreFields", false);
             }
             model.addAttribute("userEquations", sortedEquations);
         } else {

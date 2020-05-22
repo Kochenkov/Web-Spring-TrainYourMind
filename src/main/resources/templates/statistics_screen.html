@@ -11,8 +11,8 @@
 <div th:if="${message}" class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
     <h2 th:text="${message}"></h2>
 </div>
-<div class="pricing-header mx-auto text-center">
-    <table class="table" th:if="${userEquations}">
+<div th:if="${userEquations}" class="pricing-header mx-auto text-center">
+    <table class="table">
         <thead class="thead-dark">
         <tr>
             <th scope="col">Выражение</th>
@@ -31,7 +31,7 @@
         </tr>
         </tbody>
     </table>
-    <a th:href="@{'/statistics/?size=' + ${size}}">Загрузить ещё</a>
+    <a th:if="${loadMoreFields}" th:href="@{'/statistics/?size=' + ${size}}">Загрузить предыдущие результаты</a>
 </div>
 <footer th:insert="components/footer.html"></footer>
 </body>
